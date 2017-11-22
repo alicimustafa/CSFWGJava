@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Member {
@@ -19,6 +20,9 @@ public class Member {
 	@Column(name = "last_name")
 	private String lastName;
 
+	@OneToOne(mappedBy = "member")
+	private Login login;
+	
 	public int getId() {
 		return id;
 	}
