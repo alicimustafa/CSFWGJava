@@ -66,4 +66,9 @@ public class MemberTest {
 	public void test_member_profile_mapped() {
 		assertEquals("555-678-6789", mem.getProfile().getPhone());
 	}
+	
+	@Test
+	public void test_member_groups_mapped() {
+		assertEquals("Sunday group", mem.getGroups().get(0).getName());
+	}
 }

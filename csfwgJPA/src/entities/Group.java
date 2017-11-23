@@ -1,34 +1,51 @@
 package entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="writer_group")
+@Table(name = "writer_group")
 public class Group {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private String description;
-	
-	@Column(name="weekday_id")
+
+	@Column(name = "weekday_id")
 	private int weekday;
-	
+
 	private String picture;
-	
+
 	@OneToOne
-	@JoinColumn(name="officer")
+	@JoinColumn(name = "officer")
 	private Member officer;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "group_member", joinColumns = @JoinColumn(name = "member_id"), inverseJoinColumns = @JoinColumn(name = "group_id"))
+	private List<Member> members;
+
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
+	}
 
 	public int getId() {
 		return id;

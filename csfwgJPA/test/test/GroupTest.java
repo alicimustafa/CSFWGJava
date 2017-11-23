@@ -61,4 +61,9 @@ public class GroupTest {
 	public void test_group_officer_mapped() {
 		assertEquals("Jody", gr.getOfficer().getFirstName());
 	}
+	
+	@Test
+	public void test_group_members_mapped() {
+		assertEquals(3, gr.getMembers().size());
+	}
 }

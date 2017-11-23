@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,6 +33,17 @@ public class Member {
 	@OneToMany(mappedBy ="member")
 	private List<DuePayment> duePayments;
 	
+	@ManyToMany(mappedBy = "members")
+	private List<Group> groups;
+	
+	public List<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
+	}
+
 	public Profile getProfile() {
 		return profile;
 	}
