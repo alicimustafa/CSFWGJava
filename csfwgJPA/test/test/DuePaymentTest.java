@@ -10,26 +10,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Login;
+import entities.DuePayment;
 
-public class LoginTest {
+public class DuePaymentTest {
 
 	private EntityManagerFactory emf = null;
-	private EntityManager em = null;
-	private Login log;
+	private EntityManager em;
+	private DuePayment dp;
 	
 	@Before
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("csfwgPU");
 		em = emf.createEntityManager();
-		log = em.find(Login.class, 1);
+		dp = em.find(DuePayment.class, 1);
 	}
 	
 	@After
 	public void tearDown() {
 		em.close();
 		emf.close();
-		log = null;
+		dp = null;
 	}
 	
 	@Test
@@ -38,22 +38,22 @@ public class LoginTest {
 	}
 	
 	@Test
-	public void test_Login_username_mapped() {
-		assertEquals("jody@gmail.com", log.getUsername());
+	public void test_duePayment_paymentDate_mapped() {
+		assertEquals("2017-10-22", dp.getPaymentDate().toString());
 	}
 	
 	@Test
-	public void test_Login_password_mapped() {
-		assertEquals("1234", log.getPassword());
+	public void test_duePayment_year_mapped() {
+		assertEquals(2017, dp.getYear());
 	}
 	
 	@Test
-	public void test_Login_rank_mapped() {
-		assertEquals("Admin", log.getRank().getName());
+	public void test_duePayment_vouch_mapped() {
+		assertEquals(2, dp.getVouch());
 	}
 	
 	@Test
-	public void test_Login_member_mapped() {
-		assertEquals("Jody", log.getMember().getFirstName());
+	public void test_duePayment_member_mapped() {
+		assertEquals("Jody", dp.getMember().getFirstName());
 	}
 }

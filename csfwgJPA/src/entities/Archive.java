@@ -2,6 +2,7 @@ package entities;
 
 import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,7 @@ public class Archive {
 	@JoinColumn(name = "member_id")
 	private Member member;
 	
+	@Column(name ="submit_date")
 	private Date submitDate;
 	
 	private String description;

@@ -10,50 +10,50 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Login;
+import entities.Archive;
 
-public class LoginTest {
+public class ArchiveTest {
 
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
-	private Login log;
+	private Archive arc;
 	
 	@Before
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("csfwgPU");
 		em = emf.createEntityManager();
-		log = em.find(Login.class, 1);
+		arc = em.find(Archive.class, 1);
 	}
 	
 	@After
-	public void tearDown() {
+	public void teatDown() {
 		em.close();
 		emf.close();
-		log = null;
+		arc = null;
 	}
 	
 	@Test
 	public void smokeTest() {
-		assertEquals(true, true);
+		assertEquals(true,true);
 	}
 	
 	@Test
-	public void test_Login_username_mapped() {
-		assertEquals("jody@gmail.com", log.getUsername());
+	public void test_Archive_path_mapped() {
+		assertEquals("path", arc.getPath());
 	}
 	
 	@Test
-	public void test_Login_password_mapped() {
-		assertEquals("1234", log.getPassword());
+	public void test_Archive_description_mapped() {
+		assertEquals("stuf", arc.getDescription());
 	}
 	
 	@Test
-	public void test_Login_rank_mapped() {
-		assertEquals("Admin", log.getRank().getName());
+	public void test_Archive_submitDate_mapped() {
+		assertEquals("2017-11-22", arc.getSubmitDate().toString());
 	}
 	
 	@Test
-	public void test_Login_member_mapped() {
-		assertEquals("Jody", log.getMember().getFirstName());
+	public void test_Archive_member_mapped() {
+		assertEquals("Jody", arc.getMember().getFirstName());
 	}
 }

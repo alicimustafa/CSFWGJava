@@ -46,4 +46,24 @@ public class MemberTest {
 	public void member_LastName_mapped() {
 		assertEquals("Morgan", mem.getLastName());
 	}
+	
+	@Test
+	public void member_login_mapped() {
+		assertEquals("jody@gmail.com", mem.getLogin().getUsername());
+	}
+	
+	@Test
+	public void member_arhive_mapped() {
+		assertEquals("path", mem.getArchive().getPath());
+	}
+	
+	@Test
+	public void test_member_duePayments_mapped() {
+		assertEquals(1, mem.getDuePayments().size());
+	}
+	
+	@Test
+	public void test_member_profile_mapped() {
+		assertEquals("555-678-6789", mem.getProfile().getPhone());
+	}
 }

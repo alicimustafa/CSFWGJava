@@ -5,9 +5,13 @@
     <persistence-unit name="csfwgPU">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>entities.Member</class>
-        <class>entities.Rank</class>
+        <class>entities.Archive</class>
+        <class>entities.DuePayment</class>
+        <class>entities.Group</class>
         <class>entities.Login</class>
+        <class>entities.Member</class>
+        <class>entities.Profile</class>
+        <class>entities.Rank</class>
 
         <properties>
         <!-- Link to DB and User permissions: requires change -->

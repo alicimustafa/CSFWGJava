@@ -10,26 +10,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Login;
+import entities.Group;
 
-public class LoginTest {
+public class GroupTest {
 
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
-	private Login log;
+	private Group gr;
 	
 	@Before
 	public void setUp() {
 		emf = Persistence.createEntityManagerFactory("csfwgPU");
 		em = emf.createEntityManager();
-		log = em.find(Login.class, 1);
+		gr = em.find(Group.class, 1);
 	}
 	
 	@After
 	public void tearDown() {
 		em.close();
 		emf.close();
-		log = null;
+		gr = null;
 	}
 	
 	@Test
@@ -38,22 +38,27 @@ public class LoginTest {
 	}
 	
 	@Test
-	public void test_Login_username_mapped() {
-		assertEquals("jody@gmail.com", log.getUsername());
+	public void test_group_name_mapped() {
+		assertEquals("Sunday group", gr.getName());
 	}
 	
 	@Test
-	public void test_Login_password_mapped() {
-		assertEquals("1234", log.getPassword());
+	public void test_group_description_mapped() {
+		assertEquals(null, gr.getDescription());
 	}
 	
 	@Test
-	public void test_Login_rank_mapped() {
-		assertEquals("Admin", log.getRank().getName());
+	public void test_group_weekday_mapped() {
+		assertEquals(1, gr.getWeekday());
 	}
 	
 	@Test
-	public void test_Login_member_mapped() {
-		assertEquals("Jody", log.getMember().getFirstName());
+	public void test_group_picture_mapped() {
+		assertEquals(null, gr.getPicture());
+	}
+	
+	@Test
+	public void test_group_officer_mapped() {
+		assertEquals("Jody", gr.getOfficer().getFirstName());
 	}
 }
