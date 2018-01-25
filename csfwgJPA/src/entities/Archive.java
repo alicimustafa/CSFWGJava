@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Archive {
@@ -19,7 +19,7 @@ public class Archive {
 	
 	private String path;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "member_id")
 	private Member member;
 	

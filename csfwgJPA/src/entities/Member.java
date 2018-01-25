@@ -11,6 +11,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Member {
 
@@ -24,60 +28,25 @@ public class Member {
 	@Column(name = "last_name")
 	private String lastName;
 
+	@JsonManagedReference(value="memberToLogin")
 	@OneToOne(mappedBy = "member")
 	private Login login;
 	
-	@OneToOne(mappedBy = "member")
-	private Archive archive;
+	@JsonIgnore
+	@OneToMany(mappedBy="member")
+	private List<Archive> archive;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy ="member")
 	private List<DuePayment> duePayments;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "members")
 	private List<Group> groups;
-	
-	public List<Group> getGroups() {
-		return groups;
-	}
 
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
-	}
-
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
-
+	@JsonBackReference(value="memberProfile")
 	@OneToOne(mappedBy="member")
 	private Profile profile;
-	
-	public List<DuePayment> getDuePayments() {
-		return duePayments;
-	}
-
-	public void setDuePayments(List<DuePayment> duePayments) {
-		this.duePayments = duePayments;
-	}
-
-	public Login getLogin() {
-		return login;
-	}
-
-	public void setLogin(Login login) {
-		this.login = login;
-	}
-
-	public Archive getArchive() {
-		return archive;
-	}
-
-	public void setArchive(Archive archive) {
-		this.archive = archive;
-	}
 
 	public int getId() {
 		return id;
@@ -101,6 +70,46 @@ public class Member {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
+	public List<Archive> getArchive() {
+		return archive;
+	}
+
+	public void setArchive(List<Archive> archive) {
+		this.archive = archive;
+	}
+
+	public List<DuePayment> getDuePayments() {
+		return duePayments;
+	}
+
+	public void setDuePayments(List<DuePayment> duePayments) {
+		this.duePayments = duePayments;
+	}
+
+	public List<Group> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
+	}
+
+	public Profile getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
 	
 }

@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Login {
 	
@@ -23,6 +25,7 @@ public class Login {
 	@JoinColumn(name ="rank_id")
 	private Rank rank;
 	
+	@JsonBackReference(value="memberToLogin")
 	@OneToOne
 	@JoinColumn(name = "member_id")
 	private Member member;
@@ -66,4 +69,5 @@ public class Login {
 	public void setMember(Member user) {
 		this.member = user;
 	}
+
 }

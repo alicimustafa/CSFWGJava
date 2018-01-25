@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Profile {
 
@@ -32,6 +34,7 @@ public class Profile {
 
 	private String quote;
 
+	@JsonManagedReference(value="memberProfile")
 	@OneToOne
 	@JoinColumn(name = "member_id")
 	private Member member;
@@ -115,4 +118,5 @@ public class Profile {
 	public void setMember(Member member) {
 		this.member = member;
 	}
+	
 }

@@ -54,7 +54,7 @@ public class MemberTest {
 	
 	@Test
 	public void member_arhive_mapped() {
-		assertEquals("path", mem.getArchive().getPath());
+		assertEquals("path", mem.getArchive().get(0).getPath());
 	}
 	
 	@Test
