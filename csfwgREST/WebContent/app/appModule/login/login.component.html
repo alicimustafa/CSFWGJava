@@ -1,0 +1,9 @@
+<form>
+	<h4>{{vm.message}}</h4>
+	<div ng-hide='vm.loggedIn'>
+		<p class = 'error'>{{vm.errorMessage}}</p>
+		<p>User Name: <input type='text' ng-model='log.username'></p>
+		<p>Password: <input type='text' ng-model='log.password'></p>
+	</div>
+	<input type='submit' value='{{vm.logValue}}' ng-click='vm.checkLog(log)'>
+</form>
