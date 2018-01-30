@@ -5,10 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Login {
@@ -21,11 +18,6 @@ public class Login {
 	
 	private String password;
 	
-	@ManyToOne
-	@JoinColumn(name ="rank_id")
-	private Rank rank;
-	
-	@JsonBackReference(value="memberToLogin")
 	@OneToOne
 	@JoinColumn(name = "member_id")
 	private Member member;
@@ -52,14 +44,6 @@ public class Login {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Rank getRank() {
-		return rank;
-	}
-
-	public void setRank(Rank rank) {
-		this.rank = rank;
 	}
 
 	public Member getMember() {

@@ -48,11 +48,6 @@ public class MemberTest {
 	}
 	
 	@Test
-	public void member_login_mapped() {
-		assertEquals("jody@gmail.com", mem.getLogin().getUsername());
-	}
-	
-	@Test
 	public void member_arhive_mapped() {
 		assertEquals("path", mem.getArchive().get(0).getPath());
 	}
@@ -70,5 +65,10 @@ public class MemberTest {
 	@Test
 	public void test_member_groups_mapped() {
 		assertEquals("Sunday group", mem.getGroups().get(0).getName());
+	}
+	
+	@Test
+	public void test_Login_rank_mapped() {
+		assertEquals("Admin", mem.getRank().getName());
 	}
 }

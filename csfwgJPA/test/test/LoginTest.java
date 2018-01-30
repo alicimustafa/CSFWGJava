@@ -48,11 +48,6 @@ public class LoginTest {
 	}
 	
 	@Test
-	public void test_Login_rank_mapped() {
-		assertEquals("Admin", log.getRank().getName());
-	}
-	
-	@Test
 	public void test_Login_member_mapped() {
 		assertEquals("Jody", log.getMember().getFirstName());
 	}

@@ -31,14 +31,25 @@ public class AuthController {
 	public Member loginMember(@RequestBody String json, HttpServletResponse res) {
 		System.out.println(json);
 		Member member = dao.loginMember(json);
-		String jwt = Jwts.builder()
-				.setSubject(member.getFirstName())
-				.claim("id", member.getId())
-				.claim("rank", member.getLogin().getRank().getName())
-				.setExpiration(new Date(System.currentTimeMillis() + JWTConfig.EXPIRATIONTIME))
-		        .signWith(SignatureAlgorithm.HS512, JWTConfig.SECRET)
-		        .compact();
-		res.addHeader(JWTConfig.HEADER_STRING, JWTConfig.TOKEN_PREFIX + " " + jwt);
-		return member;
+		if(member != null) {
+			System.out.println(member.getFirstName());
+			String jwt = Jwts.builder()
+					.setSubject("stuff")
+					.claim("id", member.getId())
+					.claim("rank", member.getRank().getName())
+					.setExpiration(new Date(System.currentTimeMillis() + JWTConfig.EXPIRATIONTIME))
+					.signWith(SignatureAlgorithm.HS512, JWTConfig.SECRET)
+					.compact();
+			res.addHeader(JWTConfig.HEADER_STRING, JWTConfig.TOKEN_PREFIX + " " + jwt);
+			return member;
+		}
+		res.setStatus(405);
+		return null;
 	}
+
+	public void setDao(MemberDAO dao) {
+		this.dao = dao;
+	}
+	
+	
 }

@@ -27,6 +27,10 @@ sourceSets {
     java.srcDirs 'src'
     resources.srcDirs 'src/resources'
   }
+  test {
+    java.srcDirs 'test'
+  }
+  
  }
 
 repositories {
@@ -53,4 +57,9 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.hamcrest:hamcrest-junit:2.0.0.0'
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '1.9.5'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.2.0'
+    testCompile group: 'com.jayway.jsonpath', name: 'json-path-assert', version: '2.2.0'
+    
+    
 }

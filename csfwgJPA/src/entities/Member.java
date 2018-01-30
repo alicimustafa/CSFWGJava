@@ -7,13 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Member {
@@ -28,9 +29,9 @@ public class Member {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@JsonManagedReference(value="memberToLogin")
-	@OneToOne(mappedBy = "member")
-	private Login login;
+	@ManyToOne
+	@JoinColumn(name ="rank_id")
+	private Rank rank;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="member")
@@ -72,14 +73,6 @@ public class Member {
 		this.lastName = lastName;
 	}
 
-	public Login getLogin() {
-		return login;
-	}
-
-	public void setLogin(Login login) {
-		this.login = login;
-	}
-
 	public List<Archive> getArchive() {
 		return archive;
 	}
@@ -110,6 +103,14 @@ public class Member {
 
 	public void setProfile(Profile profile) {
 		this.profile = profile;
+	}
+
+	public Rank getRank() {
+		return rank;
+	}
+
+	public void setRank(Rank rank) {
+		this.rank = rank;
 	}
 	
 }
