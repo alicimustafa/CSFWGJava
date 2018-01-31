@@ -11,6 +11,8 @@
 	<context:component-scan base-package="controllers" />
 	<mvc:annotation-driven />
 
-	<bean id="mockDAO" class="controllers.MockMemberDAO" />
+	<bean id="MemberDAO" name="MemberDAO" class="org.mockito.Mockito" factory-method="mock">
+        <constructor-arg value="data.MemberDAO"/>
+    </bean>
 	
 </beans>
