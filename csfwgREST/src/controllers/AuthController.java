@@ -46,10 +46,5 @@ public class AuthController {
 		res.setStatus(405);
 		return null;
 	}
-
-	public void setDao(MemberDAO dao) {
-		this.dao = dao;
-	}
-	
 	
 }

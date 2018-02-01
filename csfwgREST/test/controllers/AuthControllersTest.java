@@ -15,13 +15,11 @@ import java.io.IOException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
 
 import builders.LoginBuilder;
 import builders.MemberBuilder;
@@ -37,15 +35,9 @@ import entities.Rank;
 public class AuthControllersTest {
 
 	private MockMvc mockMvc;
-
-	@Autowired
-	private WebApplicationContext wc;
 	
 	@Autowired
 	private MemberDAO dao;
-	 
-	@Autowired
-	private AuthController ac;
 	
 	@Test
 	public void login_returns_correct_json_if_correct_login() {

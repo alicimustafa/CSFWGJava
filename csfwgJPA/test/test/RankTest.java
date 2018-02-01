@@ -26,7 +26,7 @@ public class RankTest {
 	}
 	
 	@After
-	public void teatDown() {
+	public void tearDown() {
 		em.close();
 		emf.close();
 		ra = null;

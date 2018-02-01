@@ -26,7 +26,7 @@ public class ArchiveTest {
 	}
 	
 	@After
-	public void teatDown() {
+	public void tearDown() {
 		em.close();
 		emf.close();
 		arc = null;
